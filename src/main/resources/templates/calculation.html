@@ -177,18 +177,24 @@
     <p id="salaryResult"></p>
 
     <script>
-        function calculateSalary() {
-            // 時給と働いた時間を取得
-            var hourlyWage = parseFloat(document.getElementById("hourlyWage").value);
-            var hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
+    // カンマ区切りの関数を定義
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
-            // 給与を計算
-            var salary = hourlyWage * hoursWorked;
+    function calculateSalary() {
+        // 時給と働いた時間を取得
+        var hourlyWage = parseFloat(document.getElementById("hourlyWage").value);
+        var hoursWorked = parseFloat(document.getElementById("hoursWorked").value);
 
-            // 結果を表示（小数点以下の桁数を0に指定して整数にする）
-            document.getElementById("salaryResult").innerHTML = "給与: " + salary.toFixed(0) + " 円";
-        }
-    </script>
+        // 給与を計算
+        var salary = hourlyWage * hoursWorked;
+
+        // 給与をカンマ区切りの表示に変換して表示
+        var formattedSalary = numberWithCommas(salary.toFixed(0)) + " 円";
+        document.getElementById("salaryResult").innerHTML = "給与: " + formattedSalary;
+    }
+　</script>
   </main>
 
   <footer class="mt-auto text-white-50">
